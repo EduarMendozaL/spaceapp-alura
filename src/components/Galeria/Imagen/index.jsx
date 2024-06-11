@@ -1,8 +1,7 @@
-import styled from "styled-components";
-import BotonIcono from "../../BotonIcono";
-
+import { styled } from "styled-components"
+import BotonIcono from "../../BotonIcono"
 const Figure = styled.figure`
-    width: ${(props) => (props.$expandida ? '90%' : '370px')};
+    width: ${props => props.$expandida ? '90%' : '370px'};
     max-width: 100%;
     margin: 0;
     display: flex;
@@ -28,7 +27,7 @@ const Figure = styled.figure`
             font-size: 16px;
         }
     }
-`;
+`
 
 const Pie = styled.footer`
     display: flex;
@@ -36,27 +35,26 @@ const Pie = styled.footer`
     align-items: center;
 `
 
-const Imagen = ({foto, expandida=false, alSolicitarZoom, alAlternarFavorito}) => {
-
-    const iconoFavorito = foto.favorita ? "/iconos/favorito-activo.png" : "/iconos/favorito.png";
-
+const Imagen = ({ foto, expandida = false, alSolicitarZoom,alAlternarFavorito}) => {
+    
+ const iconoFavorito= foto.favorita ? "/iconos/favorito-activo.png" :"/iconos/favorito.png"   
+    
     return (
-    <Figure $expandida={expandida} id={`foto-${foto.id}`} >
-        <img src={foto.path} alt={foto.alt} />
-        <figcaption>
-            <h3>{foto.titulo}</h3>
-            <Pie>
-                <h4>{foto.fuente}</h4>
-                <BotonIcono onClick={() => alAlternarFavorito(foto)}>
-                    <img src={iconoFavorito} alt="Icono de favorito" />    
-                </BotonIcono>
-                {!expandida && <BotonIcono aria-hidden={expandida} onClick={() => alSolicitarZoom(foto)} >
+        <Figure $expandida={expandida} id={`foto-${foto.id}`}>
+            <img src={foto.path} alt={foto.alt} />
+            <figcaption>
+                <h3>{foto.titulo}</h3>
+                <Pie>
+                    <h4>{foto.fuente}</h4>
+                    <BotonIcono onClick={()=>alAlternarFavorito(foto)}>
+                        <img src={iconoFavorito} alt="Icone de favorito" />
+                    </BotonIcono>
+                    {!expandida && <BotonIcono aria-hidden={expandida} onClick={()=>alSolicitarZoom(foto)}>
                     <img src="/iconos/expandir.png" alt="Icono de expandir" />
                 </BotonIcono>}
-            </Pie>
-        </figcaption>
-    </Figure>
-    )
+                </Pie>
+            </figcaption>
+        </Figure>)
 }
 
 export default Imagen

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import GlobalStyle from "./components/GlobalStyles"
+import GlobalStyles from "./components/GlobalStyles"
 import Cabecera from "./components/Cabecera"
 import BarraLateral from "./components/BarraLateral"
 import Banner from "./components/Banner"
@@ -8,43 +8,41 @@ import Galeria from "./components/Galeria"
 import fotos from "./fotos.json"
 import { useState } from "react"
 import ModalZoom from "./components/ModalZoom"
+import Pie from "./components/Pie"
 
 const FondoGradiente = styled.div`
 background: linear-gradient(175deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
-width: 100%;
-min-height: 100vh;
+width:100%;
+min-height:100vh;
 `
-
 const AppContainer = styled.div`
-  width: 1280px;
-  max-width: 100%;
-  margin: 0 auto;
+  width:1280px;
+  max-width:100%;
+margin: 0 auto;
 `
-
 const MainContainer = styled.main`
   display: flex;
-  gap: 24px;
+  gap:24px;
 `
-
 const ContenidoGaleria = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 `
 
+
 const App = () => {
   const [fotosDeGaleria, setFotosDeGaleria] = useState(fotos)
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null)
 
-  // ({foto})->se pasa como un objeto
-  // (foto)->sin los corchetes, se pasa como un parámetro
   const alAlternarFavorito = (foto) => {
 
     if (foto.id === fotoSeleccionada?.id) {
       setFotoSeleccionada({
         ...fotoSeleccionada,
-        favorita: !foto.favorita
+        favorita: !fotoSeleccionada.favorita
       })
+
     }
 
     setFotosDeGaleria(fotosDeGaleria.map(fotoDeGaleria => {
@@ -55,21 +53,26 @@ const App = () => {
     }))
   }
 
+
   return (
     <>
       <FondoGradiente>
-        <GlobalStyle />
+        <GlobalStyles />
         <AppContainer>
           <Cabecera />
           <MainContainer>
             <BarraLateral />
             <ContenidoGaleria>
-              <Banner texto="La galería más completa del espacio" backgroundImage={banner} />
+              <Banner texto="La galería más completa de fotos del espacio" backgroundImage={banner} />
+
               <Galeria alSeleccionarFoto={foto => setFotoSeleccionada(foto)} fotos={fotosDeGaleria} alAlternarFavorito={alAlternarFavorito} />
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
-        <ModalZoom foto={fotoSeleccionada} close={() => setFotoSeleccionada(null)} alAlternarFavorito={alAlternarFavorito} />
+        <ModalZoom foto={fotoSeleccionada}
+          alCerrar={() => setFotoSeleccionada(null)}
+          alAlternarFavorito={alAlternarFavorito} />
+         <Pie/>
       </FondoGradiente>
     </>
   )

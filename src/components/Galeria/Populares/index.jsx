@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import { styled } from "styled-components"
 import Titulo from "../../Titulo"
 
-import fotos from "./fotos-populares.json"
+import fotos from './fotos-populares.json'
 
 const ColumnaFotos = styled.section`
     display: flex;
@@ -16,7 +16,7 @@ const Imagen = styled.img`
 
 const Boton = styled.button`
     background-color: transparent;
-    color: #FFF;
+    color: #fff;
     border: 2px solid;
     border-color: #C98CF1;
     padding: 12px 20px;
@@ -25,17 +25,17 @@ const Boton = styled.button`
     cursor: pointer;
     width: 100%;
     margin-top: 16px;
-`
+`;
 
 const Populares = () => {
     return (
         <section>
-            <Titulo $align="center">Populares</Titulo>
+            <Titulo $align='center'>Populares</Titulo>
             <ColumnaFotos>
-                {fotos.map(foto => <Imagen key={foto.id} src={foto.path} alt={foto.alt} />)}
+                {fotos.map(foto => <Imagen key={foto.id} src={foto.path} alt={foto.alt}/>)}
             </ColumnaFotos>
             <Boton>Ver más</Boton>
-    </section>
+        </section>
     )
 }
 

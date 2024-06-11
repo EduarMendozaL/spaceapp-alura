@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "styled-components"
 
 const BotonIcono = styled.button`
     margin-left: 12px;
@@ -10,4 +10,4 @@ const BotonIcono = styled.button`
     cursor: pointer;
 `
 
-export default BotonIcono;
+export default BotonIcono

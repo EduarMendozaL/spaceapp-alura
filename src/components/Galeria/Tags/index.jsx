@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import tags from "./tags.json";
+import { styled } from 'styled-components';
+import tags from './tags.json'
 
 const TagsContainer = styled.section`
     display: flex;
@@ -39,9 +39,7 @@ const Tags = () => {
     return <TagsContainer>
         <TagTitulo>Busque por tags:</TagTitulo>
         <Div>
-            {tags.map(tag => {
-                return <Tag key={tag.id}>{tag.titulo}</Tag>
-            })}
+            {tags.map(tag => <Tag key={tag.id}>{tag.titulo}</Tag>)}
         </Div>
     </TagsContainer>
 }
